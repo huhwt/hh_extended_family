@@ -94,13 +94,19 @@ Screenshot of control panel menu
 This module requires **webtrees** version 2.2 or later.
 This module has the same requirements as [webtrees#system-requirements](https://github.com/fisharebest/webtrees#system-requirements).
 
-This module was tested with **webtrees** 2.2.4 version
+If you like to offer the function "copy extended family to the clippings cart", you have to install the custom 
+module [huhwt-cce](https://github.com/huhwt/huhwt-cce) (clippings cart enhanced) in the version 2.2.5.0 or newer.
+
+This module was tested with **webtrees** 2.2.5 version
 and all available themes and all other custom modules.
 
 <a name="installation"></a>
 ## Installation
 
-This section documents installation instructions for this module.
+Install and use [Custom Module Manager](https://github.com/Jefferson49/CustomModuleManager) for an easy and convenient installation of webtrees custom modules.
++ Open the Custom Module Manager view in webtrees, scroll to "Extended Family", and click on the "Install Module" button.
+
+**Manual installation**:
 
 1. Make database backup
 1. Download the [latest release](https://github.com/hartenthaler/hh_extended_family/releases/latest)
@@ -112,8 +118,7 @@ This section documents installation instructions for this module.
 <a name="upgrade"></a>
 ## Upgrade
 
-To update simply replace the hh_extended_family files
-with the new ones from the latest release.
+To update simply replace the hh_extended_family files with the new ones from the latest release.
 
 <a name="translation"></a>
 ## Translation
@@ -152,8 +157,8 @@ There are now, beside English and German, translations to
 <a name="license"></a>
 ## License
 
-* Copyright (C) 2025 Hermann Hartenthaler
-* Derived from **webtrees** - Copyright 2025 webtrees development team.
+* Copyright (C) 2026 Hermann Hartenthaler
+* Derived from **webtrees** - Copyright 2026 webtrees development team.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

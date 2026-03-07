@@ -7,7 +7,7 @@
  * Copyright (C) 2013 Nigel Osborne and kiwtrees.net.
  *
  * webtrees: online genealogy application
- * Copyright (C) 2025 webtrees development team.
+ * Copyright (C) 2026 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,12 +25,11 @@
 
 /*
  * tbd
- * --------------------------  ab hier für das Release 2.2.1.4    ------------------------------------------------*
+ * --------------------------  ab hier für das Release 2.2.5.1    ------------------------------------------------*
  * issues "bug": see GitHub
  *
  * Code: Versionsprüfung von hh_metasearch übernehmen ??? oder ganz anders?
  * Code: collection für Familien ausprogrammieren in ExtendedFamily.php
- * Code: automatisches Kopieren in den Sammelbehälter verwerfen und stattdessen Button in Betrieb nehmen
  * Code: neuer Familienteil "great grandchildren" erstellen
  * Code: Fehler in Grandchildren suchen
  * Test: Konfigurationsoption "Partnerketten zählen dazu/nicht dazu"
@@ -40,7 +39,7 @@
  * Übersetzung: Satz umformulieren, da Proband=ohne Namen und ohne Geschlecht => Kurzname="ihn/sie"; Fehler: Die erweiterte von ihn/sie ... => Die erweiterte Familie von ihm/ihr ...
  * READme: alle Screenshots aktualisieren
  *
- * --------------------------  ab hier für ein Release nach 2.2.1.4    ------------------------------------------------
+ * --------------------------  ab hier für ein Release nach 2.2.5.1    ------------------------------------------------
  * all issues: see GitHub
  *
  * Code: neuen webtrees Validator zur Prüfung reinkommender Parameter verwenden (siehe Beispiele Magicsunday Fanchart)
@@ -128,9 +127,9 @@ class ExtendedFamilyTabModule extends AbstractModule
     public const CUSTOM_WEBSITE     = 'https://github.com/' . self::GITHUB_REPO . '/';
 
     // Custom module version
-    public const CUSTOM_VERSION     = '2.2.1.3';
+    public const CUSTOM_VERSION     = '2.2.5.0';
     public const CUSTOM_LAST        = 'https://github.com/' . self::CUSTOM_GITHUB_USER . '/' .
-                                                            self::CUSTOM_MODULE . '/raw/main/latest-version.txt';
+                                                              self::CUSTOM_MODULE . '/raw/main/latest-version.txt';
 
     /**
      * Constructor.  The constructor is called on *all* modules, even ones that are disabled.
@@ -626,8 +625,7 @@ class ExtendedFamilyTabModule extends AbstractModule
     {
         /*return view($this->name() . '::test.blade', ['title'=>'Laravel Blade Example']);*/
 
-        // use helper function to check if huhwt-cce is accessible in current user context
-        $cce_ok                     = Functions::test_CCE_ ( $individual->tree(), Auth::user());
+        // use helper function to check if huhwt-cce is accessible in the current user context
 
         return view($this->name() . '::' . 'tab',
             [
@@ -635,7 +633,7 @@ class ExtendedFamilyTabModule extends AbstractModule
             'individual'            => $individual,
             'extfam_obj'            => $this->getExtendedFamily($individual),
             'extended_family_css'   => route('module', ['module' => $this->name(), 'action' => 'Css']),
-            'cce_ok'                => $cce_ok,
+            'cce_ok'                => Functions::test_CCE_ ( $individual->tree(), Auth::user()),
             ]);
         }
 
