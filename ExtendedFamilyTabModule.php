@@ -82,6 +82,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Fisharebest\Webtrees\Session;
 //use Cissee\Webtrees\Module\ExtendedRelationships;
 
 use function str_starts_with;
@@ -625,7 +626,12 @@ class ExtendedFamilyTabModule extends AbstractModule
     {
         /*return view($this->name() . '::test.blade', ['title'=>'Laravel Blade Example']);*/
 
-        // use helper function to check if huhwt-cce is accessible in the current user context
+        // use helper function to check if huhwt-cce is accessible in current user context
+        $cce_ok                     = Functions::test_CCE_ ( $individual->tree(), Auth::user());
+        if ( $cce_ok ) {
+            // we have to save the calling url for correct redirect
+            Session::put('hhEF-act-route', $_GET['route']);
+        }
 
         return view($this->name() . '::' . 'tab',
             [
@@ -633,7 +639,7 @@ class ExtendedFamilyTabModule extends AbstractModule
             'individual'            => $individual,
             'extfam_obj'            => $this->getExtendedFamily($individual),
             'extended_family_css'   => route('module', ['module' => $this->name(), 'action' => 'Css']),
-            'cce_ok'                => Functions::test_CCE_ ( $individual->tree(), Auth::user()),
+            'cce_ok'                => $cce_ok,
             ]);
         }
 
